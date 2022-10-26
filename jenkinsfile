@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    
+    enviroment {
+        main = 'git@feature/main'
+        dev = 'git@feature/main'
+    }
+    
+    stages {
+        stage ('Test application') {
+            when {
+                branch 'feature/main'
+            }
+            steps {
+                echo 'Test passed in main!' && $main
+            }
+            when {
+                branch 'feature/develop' && $dev
+            }
+            steps {
+                echo 'Test passed in develop!'
+            }
+        }
+        stage ('Deploy application') {
+            steps {
+                echo 'Deploy finished!'
+            }
+        }
+        stage ('Check application files') {
+            steps {
+                echo 'Files checked!'
+            }
+        }
+    }
+}
