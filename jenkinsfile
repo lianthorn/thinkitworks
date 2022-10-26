@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    options {
+        skipDefaultCheckout(true)
+    }
+    
     enviroment {
         main = 'git@feature/main'
         dev = 'git@feature/main'
