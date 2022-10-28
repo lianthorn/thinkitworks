@@ -19,6 +19,9 @@ pipeline {
             }
         }
         stage ('Deploy application') {
+            when {
+                branch 'main'
+            }
             steps {
                 echo 'Deploy finished!'
             }
