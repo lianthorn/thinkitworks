@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage ('Test application') {
+        stage ('Test application main') {
             when {
                 branch 'feature/main'
             }
@@ -10,7 +10,7 @@ pipeline {
                 echo 'Test passed in main!'
             }
         }
-        stage ('Test application') {
+        stage ('Test application dev') {
             when {
                 branch 'feature/develop'
             }
