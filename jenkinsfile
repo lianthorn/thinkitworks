@@ -9,6 +9,8 @@ pipeline {
             steps {
                 echo 'Test passed in main!'
             }
+        }
+        stage ('Test application') {
             when {
                 branch 'feature/develop'
             }
