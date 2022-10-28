@@ -1,25 +1,18 @@
 pipeline {
     agent any
     
-    options {
-        skipDefaultCheckout(true)
-    }
-    
-    enviroment {
-        main = 'git@feature/main'
-        dev = 'git@feature/main'
-    }
-    
     stages {
-        stage ('Test application') {
+        stage ('Test application main') {
             when {
                 branch 'feature/main'
             }
             steps {
-                echo 'Test passed in main!' && $main
+                echo 'Test passed in main!'
             }
+        }
+        stage ('Test application dev') {
             when {
-                branch 'feature/develop' && $dev
+                branch 'feature/develop'
             }
             steps {
                 echo 'Test passed in develop!'
