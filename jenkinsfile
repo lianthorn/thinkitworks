@@ -1,18 +1,13 @@
 pipeline {
     agent any
     
-    enviroment {
-        main = 'git@feature/main'
-        dev = 'git@feature/main'
-    }
-    
     stages {
         stage ('Test application main') {
             when {
                 branch 'feature/main'
             }
             steps {
-                echo 'Test passed in main!' && '$main'
+                echo 'Test passed in main!'
             }
         }
         stage ('Test application dev') {
@@ -20,7 +15,7 @@ pipeline {
                 branch 'feature/develop'
             }
             steps {
-                echo 'Test passed in develop!' && echo '$dev'
+                echo 'Test passed in develop!'
             }
         }
         stage ('Deploy application') {
